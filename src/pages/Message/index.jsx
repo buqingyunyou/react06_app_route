@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, Route, Switch, Redirect } from "react-router-dom";
-
 import Detail from "../Detail";
 
 export default class Message extends React.Component {
@@ -8,9 +7,11 @@ export default class Message extends React.Component {
     indexs: [1, 2, 3],
   };
 
+  // 编程式导航，使用 push(url,{}) 方法进行跳转
+  // 合成事件：return fn
   handlePush = (key) => {
     return () => {
-      return this.props.history.push(`/home/message/${key}`, {
+      this.props.history.push(`/home/message/${key}?name=lila&age=18`, {
         name: "jack",
         age: 18,
       });
@@ -19,7 +20,7 @@ export default class Message extends React.Component {
 
   handleReplace = (key) => {
     return () => {
-      return this.props.history.replace(`/home/message/${key}`);
+      this.props.history.replace(`/home/message/${key}`);
     };
   };
 

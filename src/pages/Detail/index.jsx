@@ -22,11 +22,12 @@ export default class Detail extends React.Component {
   };
   render() {
     // 获取路由传参params（this.props.match.params）
+    const { id } = this.props.match.params;
     // 获取路由传参query/search(this.props.location.search)
     console.log(this.props.location.search);
     // 获取路由传递state（this.props.location.state）
-    const { id } = this.props.match.params;
-    console.log(id);
+    console.log(this.props.location.state);
+    // console.log(id);
 
     const { dts } = this.state;
     const item = dts.find((item) => {

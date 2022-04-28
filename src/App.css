@@ -21,8 +21,9 @@
   width: 100px;
   text-align: center;
 }
-.app .con .nav .nav-item.my-active {
+.app .con .nav .nav-item.myActive {
   background-color: #718ece;
+  color: #fff;
 }
 .app .con .right-con {
   padding: 0 40px;

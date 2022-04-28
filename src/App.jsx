@@ -31,20 +31,28 @@ export default class App extends React.Component {
           <div className="con">
             {/* 2.1左侧导航栏 */}
             <div className="nav">
-              <NavLink className="nav-item" to="/about">
+              <NavLink
+                className="nav-item"
+                activeClassName="myActive"
+                to="/about">
                 About
               </NavLink>
-              <NavLink className="nav-item myActive" to="/home">
+              <NavLink
+                className="nav-item"
+                activeClassName="myActive"
+                to="/home">
                 Home
               </NavLink>
             </div>
 
             {/* 2.2右侧主体 */}
-            <Switch>
-              <Route path="/about" component={About}></Route>
-              <Route path="/home" component={Home}></Route>
-              <Redirect to="/home"></Redirect>
-            </Switch>
+            <div>
+              <Switch>
+                <Route path="/about" component={About}></Route>
+                <Route path="/home" component={Home}></Route>
+                <Redirect to="/home"></Redirect>
+              </Switch>
+            </div>
           </div>
         </div>
       </Router>

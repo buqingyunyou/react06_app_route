@@ -4,31 +4,57 @@ import { NavLink, Route, Switch, Redirect } from "react-router-dom";
 import Detail from "../Detail";
 
 export default class Message extends React.Component {
+  state = {
+    indexs: [1, 2, 3],
+  };
+
+  handlePush = (key) => {
+    return () => {
+      return this.props.history.push(`/home/message/${key}`, {
+        name: "jack",
+        age: 18,
+      });
+    };
+  };
+
+  handleReplace = (key) => {
+    return () => {
+      return this.props.history.replace(`/home/message/${key}`);
+    };
+  };
+
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
+  handleForward = () => {
+    this.props.history.goForward();
+  };
+
   render() {
+    const { indexs } = this.state;
     return (
       <div>
         <div className="detail">
           <h4>Message</h4>
           <ul>
-            <li>
-              <NavLink to="/home/message/1">Message001</NavLink>
-              <button>跳转push</button>
-              <button>跳转replace</button>
-            </li>
-            <li>
-              <NavLink to="/home/message/2">Message002</NavLink>
-              <button>跳转push</button>
-              <button>跳转replace</button>
-            </li>
-            <li>
-              <NavLink to="/home/message/3">Message003</NavLink>
-              <button>跳转push</button>
-              <button>跳转replace</button>
-            </li>
+            {indexs.map((item) => {
+              return (
+                <li key={item}>
+                  <NavLink to={`/home/message/${item}`}>
+                    Message00{item}
+                  </NavLink>
+                  <button onClick={this.handlePush(item)}>跳转push</button>
+                  <button onClick={this.handleReplace(item)}>
+                    跳转replace
+                  </button>
+                </li>
+              );
+            })}
           </ul>
           <div className="btn-go">
-            <button>上一步</button>
-            <button>下一步</button>
+            <button onClick={this.handleBack}>上一步</button>
+            <button onClick={this.handleForward}>下一步</button>
           </div>
 
           <Switch>
